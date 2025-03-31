@@ -2,6 +2,9 @@ package kr.ac.kopo.basicwiget;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -11,6 +14,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    EditText edit1;
+    TextView textResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,5 +39,20 @@ public class MainActivity extends AppCompatActivity {
         text3.setText("SingleLine속성SingleLine속성SingleLine속성SingleLine속성SingleLine속성SingleLine속성SingleLine속성");
         text3.setSingleLine(true);
 
+        edit1 = findViewById(R.id.edit1);
+        textResult = findViewById(R.id.textResult);
+        Button btnResult = findViewById(R.id.btnResult);
+
+        btnResult.setOnClickListener(btnListener);
     }
+
+    View.OnClickListener btnListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String univName = edit1.getText().toString();
+            String result = univName + "에 합격하신 것을 진심으로 축하드립니다.";
+            textResult.setText(result);
+            textResult.setTextColor(Color.rgb(67,116,217));
+        }
+    };
 }
